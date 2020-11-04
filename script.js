@@ -2,7 +2,9 @@ var express = require('express');
 var mysql = require('mysql');
 var app = express();
 
-
+app.get('/', function(req, resp){
+    resp.sendFile( __dirname + '/var/www/D4G/index.html');
+});
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -31,8 +33,6 @@ app.get('/', function(req, resp) {
 });
 */
 
-app.get('/', function(req, resp){
-    resp.sendFile('/var/www/D4G/index.html');
-});
+
  
 app.listen(8080);
