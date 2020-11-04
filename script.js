@@ -1,27 +1,3 @@
-var express = require('express');
-var mysql = require('mysql');
-var app = express();
-
-var connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "D4G"
-});
-
-connection.connect(function(error) {
-    if (!!error)  {
-        console.log('Error');
-    } else {
-        console.log('Connected');
-    }
-});
-
-app.get('/', function(req, resp){
-    resp.sendFile( __dirname + '/index.html');
-});
-
-app.listen(8080);
 /*
 function getCP(){
     var temp;
