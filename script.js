@@ -33,8 +33,6 @@ app.get('/', function(req, resp) {
 
 app.get('/', function(req, resp){
     resp.sendFile('/var/www/D4G/index.html');
-    var newP = document.createElement('p');
-    newP.textContent = 'Paragraphe créé et inséré grâce au JavaScript';
 });
 
 app.listen(8080);
