@@ -6,7 +6,8 @@ function getCP(){
 }
 */
 
-function nodejs(CP){
+function nodejs(){
+    alert("Hello worl");
 
     var express = require('express');
     var mysql = require('mysql');
