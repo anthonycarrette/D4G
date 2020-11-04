@@ -5,6 +5,8 @@
 		<meta charset="UTF-8">
 		<link rel="icon" href="favicon.png" />
 
+		<script type="text/javascript" src="script.js"></script>
+
 		<style>
 			table
 			{
@@ -34,7 +36,7 @@
 			Les deux autres sont les compétences utilisation d'une interface et les compétences administratives.
 		</p>
 
-		<form method="get">
+		<form>
 			<p>Chercher une commune par : </p>
 			<label for="CP">Code Postal</label>
 			<input type="text" name="CP" id="CP">
@@ -42,7 +44,7 @@
 			<select name="NomCommune" id="NomCommune">
 				<option value="1">Choisir une commune</option>
 			</select>
-			<button>Rechercher</button>
+			<button onclick="nodejs(49000)">Rechercher</button>
 		</form><br>
 
 		<table>
