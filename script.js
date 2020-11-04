@@ -2,6 +2,8 @@ var express = require('express');
 var mysql = require('mysql');
 var app = express();
 
+
+
 var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -23,7 +25,7 @@ app.get('/', function(req, resp) {
             console.log('Error in the query');
         } else {
             console.log('Successfull query');
-            resp.send(rows);
+            res.sendFile('./index.html');
         }
     });
 });
