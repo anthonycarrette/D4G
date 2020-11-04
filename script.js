@@ -6,6 +6,11 @@ app.get('/', function(req, resp){
     resp.sendFile( __dirname + '/index.html');
 });
 
+app.get('/', function(req, resp){
+    var CP = request.param("CP"); 
+    resp.send(CP);
+});
+
 var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
