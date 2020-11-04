@@ -30,7 +30,7 @@ function nodejs(CP){
             console.log('Connected');
         }
     });
-    /*
+    
     app.get('/', function(req, resp) {
         connection.query("SELECT CDR.CP, CDR.NomCom, InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, InfoCom.GlobalAcces, InfoCom.GlobalCompetences, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = 49750;", function(error, rows, fields) {
             if (!!error)  {
@@ -41,8 +41,8 @@ function nodejs(CP){
             }
         });
     });
-    */
-
+    
+/*
     var sql = "SELECT CDR.CP, CDR.NomCom, InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, InfoCom.GlobalAcces, InfoCom.GlobalCompetences, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = ?";
     connection.query(sql, [CP], function(error, rows, fields) {
         if (!!error)  {
@@ -52,7 +52,7 @@ function nodejs(CP){
             resp.send(rows);
         }
     });
-
+*/
 
     
     app.listen(8080);
