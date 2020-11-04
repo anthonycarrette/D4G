@@ -2,10 +2,6 @@ var express = require('express');
 var mysql = require('mysql');
 var app = express();
 
-app.get('/', function(req, resp){
-    resp.sendFile( __dirname + '/index.html');
-});
-
 var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -21,6 +17,11 @@ connection.connect(function(error) {
     }
 });
 
+app.get('/', function(req, resp){
+    resp.sendFile( __dirname + '/index.html');
+});
+
+app.listen(8080);
 /*
 function getCP(){
     var temp;
@@ -54,7 +55,4 @@ function nodejs(){
         }
     });
 */
-
-    
-    app.listen(8080);
 }
