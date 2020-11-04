@@ -3,7 +3,7 @@ var mysql = require('mysql');
 var app = express();
 
 app.get('/', function(req, resp){
-    resp.sendFile( __dirname + '/var/www/D4G/index.html');
+    resp.sendFile( __dirname + '/index.html');
 });
 
 var connection = mysql.createConnection({
