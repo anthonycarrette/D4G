@@ -4,7 +4,7 @@ var path = require('path');
 http.createServer(function(req, res) {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     //res.end('Hello World!');
-    res.sendFile(path.join(__dirname + '/index.html'));
+    res.sendFile( __dirname + "/public/" + "/index.html" );
 }).listen(8080);
 
 /*
