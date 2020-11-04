@@ -36,6 +36,7 @@ app.get('/', function(req, resp){
     resp.write('<p>');
     resp.write('Bonjour ceci est un test.');
     resp.write('</p>');
+    resp.end();
 });
 
 app.listen(8080);
