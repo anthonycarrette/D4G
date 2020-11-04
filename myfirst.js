@@ -1,9 +1,10 @@
 var http = require('http');
+var path = require('path');
 
 http.createServer(function(req, res) {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     //res.end('Hello World!');
-    res.sendFile( __dirname  + '/index.html');
+    res.sendFile(path.join(__dirname + '/index.html'));
 }).listen(8080);
 
 /*
