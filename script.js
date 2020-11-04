@@ -32,7 +32,10 @@ app.get('/', function(req, resp) {
 */
 
 app.get('/', function(req, resp){
-    resp.sendFile('/var/www/D4G/index.html')
+    resp.sendFile('/var/www/D4G/index.html');
+    resp.write('<p>');
+    resp.write('Bonjour ceci est un test.');
+    resp.write('</p>');
 });
 
 app.listen(8080);
