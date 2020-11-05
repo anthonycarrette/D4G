@@ -99,7 +99,11 @@ catch(Exception $e)
 							$req->execute(array(
 							'CP' => $CP ));
 							while ($donnees = $req->fetch()){
-								echo '<option value="' . htmlspecialchars($donnees['NomCom']) . '">' . htmlspecialchars($donnees['NomCom']) . '</option>';
+								if (htmlspecialchars($donnees['NomCom']) == $_POST['NomCommune']){
+									echo '<option value="' . htmlspecialchars($donnees['NomCom']) . '" selected>' . htmlspecialchars($donnees['NomCom']) . '</option>';
+								} else {
+									echo '<option value="' . htmlspecialchars($donnees['NomCom']) . '">' . htmlspecialchars($donnees['NomCom']) . '</option>';
+								}
 							}
 							$req->closeCursor();
 						}
