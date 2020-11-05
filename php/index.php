@@ -10,7 +10,7 @@ catch(Exception $e)
 ?>
 
 <!DOCTYPE html>
-<html id="content">
+<html>
 	<head>
 		<title>Team 4 - DESIGN4GREEN 2020</title>
 		<meta charset="UTF-8">
@@ -60,7 +60,7 @@ catch(Exception $e)
 		</style>
 	</head>
 	
-	<body>
+	<body id="content">
 		<h1 class="titre">Team 4 - DESIGN4GREEN 2020</h1>
 
 		<h2>L'indice de fragilité numérique</h2>
@@ -158,7 +158,7 @@ catch(Exception $e)
 					}
 				}
 				echo '</table>';
-				echo '<button id="cmd">Generate PDF</button>';
+				echo '<button onclick="telecharge()">Generate PDF</button>';
             }
             $req->closeCursor();
         ?>
