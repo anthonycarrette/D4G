@@ -8,17 +8,14 @@ catch(Exception $e)
     die('Erreur : '.$e->getMessage());
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>Team 4 - DESIGN4GREEN 2020</title>
 		<meta charset="UTF-8">
 		<link rel="icon" href="./D4G.png"/>
-
 		<script type="text/javascript" src="pdf.js"></script>
 		<script src="jspdf.min.js"></script>
-
 		<style>
 			body{
 				display: flex;
@@ -62,11 +59,9 @@ catch(Exception $e)
 			}
 		</style>
 	</head>
-	
 	<body>
 		<main>
 			<h1 class="titre">Team 4 - DESIGN4GREEN 2020</h1>
-
 			<h2>L'indice de fragilité numérique</h2>
 			<p align="justify">
 				L'indice de fragilité numérique révèle les zones d'exclusion numérique sur un territoire donné.
@@ -115,41 +110,32 @@ catch(Exception $e)
 					<input type="submit" id ="search" value="Rechercher" />
 				</form>
 			</div>
-			
 			<?php
 				if (isset($_POST['NomCommune']) AND $_POST['NomCommune'] != "") { 
 					$Com = $_POST['NomCommune'];
 					$CP = $_POST['CP'];
-
 					echo '<table id="content">
 					<tr><th rowspan="2">Code Postal</th><th colspan="3">Commune</th><th colspan="2">Accès</th><th colspan="2">Compétences</th><th rowspan="2">Score Global Commune</th><th rowspan="2">Score Global Région</th></tr>
 					<tr><td>Nom</td><td>Nom Iris</td><td>Population</td><td>Accès aux interfaces numériques</td><td>Accès à l\'information</td><td>Compétences administratives</td><td>Compétences numériques/scolaires</td></tr>';
-					
 					$req = $bdd->prepare('SELECT count(*) as numbers FROM `Records` WHERE NomCom LIKE :Com and CodePostal = :CP;');
 					$req->execute(array(
 						'Com' => $Com,
-						'CP' => $CP,
-					));
-
+						'CP' => $CP,));
 					$donnees = $req->fetch();
 					if ($donnees['numbers'] != 0) {
 						$req = $bdd->prepare('SELECT * FROM `Records` WHERE NomCom LIKE :Com AND CodePostal = :CP;');
 						$req->execute(array(
 						'Com' => $Com,
-						'CP' => $CP,
-					));
+						'CP' => $CP,));
 						while ($donnees = $req->fetch()){
 							echo '<tr><td>' . htmlspecialchars($donnees['CodePostal']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['NomIris']) . '</td><td>' . htmlspecialchars($donnees['Populations']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInfo']) . '</td><td>' . htmlspecialchars($donnees['CompAdmin']) . '</td><td>' . htmlspecialchars($donnees['CompNum']) . '</td><td>' . htmlspecialchars($donnees['ScoreCom']) . '</td><td>' . htmlspecialchars($donnees['ScoreReg']) . '</td></tr>';
 						}
-
 					} else {
 						$req = $bdd->prepare('SELECT CDR.CP, CDR.NomCom, InfoCom.NomIris,InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.NomCom LIKE :Com; and CDR.CP = :CP');
 						$req->execute(array(
 							'Com' => $Com,
-							'CP' => $CP,
-						));
+							'CP' => $CP,));
 						while ($donnees = $req->fetch()){
-
 							$req2 = $bdd->prepare('INSERT INTO Records (CodePostal, NomCom, NomIris, Populations, AccesInterfaceNum, AccesInfo, CompAdmin, CompNum, ScoreCom, ScoreReg) VALUES (:CP, :NomCom, :NomIris,:Populations, :AccesInterfaceNum, :AccesInformation, :CompAdministrative, :CompNumerique, :ScoreGlobalCom, :ScoreGlobalRegion)');
 							$req2->execute(array(
 								'CP' => htmlspecialchars($donnees['CP']),
@@ -174,13 +160,11 @@ catch(Exception $e)
 				}
 			?>
 		</main>
-
 		<footer>
 			<p>
 				Mentions légales : Ce site à été réalisé par l'équipe 4 du Design4Green 2020.</br>
 				Aucunes données personelles n'est enregistrées lors de l'utilisation de cette application.
 			</p>
 		</footer>
-		
 	</body>
 </html>
