@@ -84,19 +84,11 @@ catch(Exception $e)
 					<?php
 						if (isset($_POST['CP']) AND $_POST['CP'] != "") {
 							$CP = $_POST['CP'];
-							$req = $bdd->prepare('SELECT count(*) as numbers FROM `Records` WHERE CodePostal = :CP;');
+							$req = $bdd->prepare('SELECT CDR.NomCom FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = :CP;');
 							$req->execute(array(
-								'CP' => $CP,
-							));
-
-							$donnees = $req->fetch();
-							if ($donnees['numbers'] != 0) {
-								$req = $bdd->prepare('SELECT CDR.NomCom AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = :CP;');
-								$req->execute(array(
-								'CP' => $CP ));
-								while ($donnees = $req->fetch()){
-									echo '<option value="' . htmlspecialchars($donnees['NomCom']) . '">' . htmlspecialchars($donnees['NomCom']) . '</option>';
-								}
+							'CP' => $CP ));
+							while ($donnees = $req->fetch()){
+								echo '<option value="' . htmlspecialchars($donnees['NomCom']) . '">' . htmlspecialchars($donnees['NomCom']) . '</option>';
 							}
 							$req->closeCursor();
 						}
