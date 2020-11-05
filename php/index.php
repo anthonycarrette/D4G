@@ -58,10 +58,9 @@ catch(Exception $e)
             {
                 margin-bottom: 10px;
             }
-			footer
+			#download
 			{
-				position: absolute; 
-				bottom: 0;
+				margin-top: 10px;
 			}
 		</style>
 	</head>
@@ -173,7 +172,7 @@ catch(Exception $e)
 					echo '</table>';
 					echo '<div id="editor"></div>';
 					$req->closeCursor();
-					echo '<button onclick="telecharger()">Télécharger PDF</button>';
+					echo '<button onclick="telecharger()" id="download">Télécharger PDF</button>';
 				}
 			?>
 			
