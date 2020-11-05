@@ -163,7 +163,7 @@ catch(Exception $e)
 		<footer>
 			<p>
 				Mentions légales : Ce site à été réalisé par l'équipe 4 du Design4Green 2020.</br>
-				Aucunes données personelles n'est enregistrées lors de l'utilisation de cette application.
+				Aucunes données personelles ne sont enregistrées lors de l'utilisation de cette application.
 			</p>
 		</footer>
 	</body>
