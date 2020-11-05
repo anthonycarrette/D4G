@@ -98,6 +98,10 @@ catch(Exception $e)
 								echo '<option value="' . htmlspecialchars($donnees['NomCom']) . '">' . htmlspecialchars($donnees['NomCom']) . '</option>';
 							}
 
+
+							$req = $bdd->prepare('SELECT CDR.NomCom FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = :CP;');
+							$req->execute(array(
+							'CP' => $CP ));
 							//Initialize array variable
 							$dbdata = array();
 							//Fetch into associative array
