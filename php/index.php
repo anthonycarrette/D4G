@@ -10,7 +10,7 @@ catch(Exception $e)
 ?>
 
 <!DOCTYPE html>
-<html>
+<html id="content">
 	<head>
 		<title>Team 4 - DESIGN4GREEN 2020</title>
 		<meta charset="UTF-8">
