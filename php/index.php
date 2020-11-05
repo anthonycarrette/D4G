@@ -106,6 +106,7 @@ catch(Exception $e)
                     if ($donnees['CodePostal'] != "" ){
                         echo '<tr><td>' . htmlspecialchars($donnees['CodePostal']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['NomIris']) . '</td><td>' . htmlspecialchars($donnees['Populations']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInfo']) . '</td><td>' . htmlspecialchars($donnees['CompAdmin']) . '</td><td>' . htmlspecialchars($donnees['CompNum']) . '</td><td>' . htmlspecialchars($donnees['ScoreCom']) . '</td><td>' . htmlspecialchars($donnees['ScoreReg']) . '</td></tr>';
                     } else {
+						echo 'Pas encore enregistré'
                         $req = $bdd->prepare('SELECT CDR.CP, CDR.NomCom, InfoCom.NomIris,InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = :CP;');
                         $req->execute(array(
                             'CP' => $CP,
