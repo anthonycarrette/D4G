@@ -36,7 +36,8 @@ app.get('/', function(req, resp) {
 */
 var CP = 49000;
 var sql = "SELECT CDR.CP, CDR.NomCom, InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, InfoCom.GlobalAcces, InfoCom.GlobalCompetences, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = ?";
-connection.query(sql, [CP], function(error, rows, fields) {
+app.get('/', function(req, resp) {
+    connection.query(sql, [CP], function(error, rows, fields) {
     if (!!error)  {
         console.log('Error in the query');
     } else {
@@ -44,7 +45,7 @@ connection.query(sql, [CP], function(error, rows, fields) {
         resp.send(rows);
         console.log('Result send');
     }
+    });
 });
-
 
 app.listen(8080);
