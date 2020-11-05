@@ -88,30 +88,38 @@ catch(Exception $e)
 							echo '<input type="text" name="CP" id="CP" value="">';
 						}
 					?>
-					<br>
-					<label for="NomCommune">Nom de commune</label>
-					<select name="NomCommune" id="NomCommune">
-
-						<?php
-							if (isset($_POST['CP']) AND $_POST['CP'] != "") {
-								$CP = $_POST['CP'];
-								$req = $bdd->prepare('SELECT CDR.NomCom FROM CDR WHERE CDR.CP = :CP;');
-								$req->execute(array(
-								'CP' => $CP ));
-								while ($donnees = $req->fetch()){
-									echo '<option value="' . htmlspecialchars($donnees['NomCom']) . '">' . htmlspecialchars($donnees['NomCom']) . '</option>';
-								}
-								$req->closeCursor();
+					<?php
+						if (isset($_POST['CP']) AND $_POST['CP'] != "") {
+							echo '
+							<br>
+							<label for="NomCommune">Nom de commune</label>
+							<select name="NomCommune" id="NomCommune">';
+							$CP = $_POST['CP'];
+							$req = $bdd->prepare('SELECT CDR.NomCom FROM CDR WHERE CDR.CP = :CP;');
+							$req->execute(array(
+							'CP' => $CP ));
+							while ($donnees = $req->fetch()){
+								echo '<option value="' . htmlspecialchars($donnees['NomCom']) . '">' . htmlspecialchars($donnees['NomCom']) . '</option>';
 							}
-						?>
-
+							$req->closeCursor();
+						}
+					?>
 					</select>
 					<br>
 					<input type="submit" value="Rechercher" />
 				</form>
 			</div>
-
+			
 			<?php
+				if (isset($_POST['NomCommune']) AND $_POST['NomCommune'] != "") { 
+					echo $_POST['NomCommune'];
+				}
+			?>
+
+
+
+
+			<?php/*
 				$CP = $_POST['CP'];
 				$Com = $_POST['NomCommune'];
 
@@ -163,7 +171,7 @@ catch(Exception $e)
 					echo '<div id="editor"></div>';
 					echo '<button onclick="telecharger()">Télécharge PDF</button>';
 				}
-				$req->closeCursor();
+				$req->closeCursor();*/
 			?>
 			
 			<footer>
