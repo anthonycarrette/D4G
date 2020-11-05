@@ -16,7 +16,9 @@ catch(Exception $e)
 		<meta charset="UTF-8">
 		<link rel="icon" href="D4G.png" />
 
-		<script type="text/javascript" src="script.js"></script>
+		<script src="jquery-3.5.1.min.js"></script>
+		<script src="jspdf.min.js"></script>
+		<script type="text/javascript" src="pdf.js"></script>
 
 		<style>
 			body{
@@ -155,7 +157,8 @@ catch(Exception $e)
 						echo '<tr><td>' . htmlspecialchars($donnees['CP']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['NomIris']) . '</td><td>' . htmlspecialchars($donnees['Population']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInformation']) . '</td><td>' . htmlspecialchars($donnees['CompAdministrative']) . '</td><td>' . htmlspecialchars($donnees['CompNumerique']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalCom']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalRegion']) . '</td></tr>';
 					}
 				}
-                echo '</table>';
+				echo '</table>';
+				echo '<button id="cmd">Generate PDF</button>';
             }
             $req->closeCursor();
         ?>
