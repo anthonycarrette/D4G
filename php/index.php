@@ -97,9 +97,16 @@ catch(Exception $e)
 							while ($donnees = $req->fetch()){
 								echo '<option value="' . htmlspecialchars($donnees['NomCom']) . '">' . htmlspecialchars($donnees['NomCom']) . '</option>';
 							}
-							$json = json_encode($arr);
-							$file = file_get_contents($json);
-							exit($file);
+
+							//Initialize array variable
+							$dbdata = array();
+							//Fetch into associative array
+							while ( $row = $req->fetch_assoc())  {
+								$dbdata[]=$row;
+							}
+							//Print array in JSON format
+							echo json_encode($dbdata);
+
 							$req->closeCursor();
 						}
 					?>
