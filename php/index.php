@@ -18,6 +18,8 @@ catch(Exception $e)
 
 		<script type="text/javascript" src="pdf.js"></script>
 		<script src="html2canvas.js"></script>
+		<script src="jquery-3.5.1.min.js"></script>
+		<script src="jspdf.js"></script>
 
 		<style>
 			body{
