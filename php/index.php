@@ -90,7 +90,6 @@ catch(Exception $e)
         <?php
             $CP = $_POST['CP'];
             $Com = $_POST['NomCommune'];
-            echo $CP;
 
             if (isset($_POST['CP']) AND $_POST['CP'] != "") {
                 $req = $bdd->prepare('SELECT CDR.CP, CDR.NomCom, InfoCom.NomIris,InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = :CP;');
