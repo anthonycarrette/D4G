@@ -31,8 +31,8 @@ app.get('/', function(req, resp) {
             console.log('Error in the query');
         } else {
             console.log('Successfull query');
-            //resp.send(rows);
-            resp.send('<table>');
+            resp.send(rows);
+/*            resp.send('<table>');
             resp.send('<tr><th rowspan="2">Code Postal</th><th colspan="2">Commune</th><th colspan="2">Accès</th><th colspan="2">Compétences</th><th rowspan="2">Score Global</th></tr>');
             resp.send('<tr><td>Nom</td><td>Population</td><td>Accès aux interfaces numériques</td><td>Accès à l\'information</td><td>Compétences administratives</td><td>Compétences numériques/scolaires</td></tr>');
             resp.send('<tr><td>');
@@ -56,7 +56,7 @@ app.get('/', function(req, resp) {
             resp.send('<p>Score de la région : </p>');
             resp.send(rows[0].ScoreGlobalRegion);
             resp.end();
-        }
+*/        }
     });
 });
 
