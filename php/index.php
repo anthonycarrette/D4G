@@ -125,7 +125,7 @@ catch(Exception $e)
 
 					$donnees = $req->fetch();
 					if ($donnees['numbers'] != 0) {
-						$req = $bdd->prepare('SELECT * FROM `Records` WHERE CodePostal = :Com;');
+						$req = $bdd->prepare('SELECT * FROM `Records` WHERE NomCom like :Com;');
 						$req->execute(array(
 						'Com' => $Com ));
 						while ($donnees = $req->fetch()){
@@ -133,7 +133,7 @@ catch(Exception $e)
 						}
 
 					} else {
-						$req = $bdd->prepare('SELECT CDR.CP, CDR.NomCom, InfoCom.NomIris,InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.NomCom = :Com;');
+						$req = $bdd->prepare('SELECT CDR.CP, CDR.NomCom, InfoCom.NomIris,InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.NomCom like :Com;');
 						$req->execute(array(
 							'Com' => $Com,
 						));
@@ -157,11 +157,12 @@ catch(Exception $e)
 						}
 					}
 					echo '</table>';
+					$req->closeCursor();
 				}
 			?>
 
 
-
+			<!--
 
 			<?php/*
 				$CP = $_POST['CP'];
@@ -217,6 +218,7 @@ catch(Exception $e)
 				}
 				$req->closeCursor();*/
 			?>
+			-->
 			
 			<footer>
 				<p>
