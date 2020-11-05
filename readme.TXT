@@ -1,1 +1,0 @@
-Les sources de ce challenge, reste la propriété de l'équipe de développeurs de l'équipe 4 'Les M3A' avec Anthony CARRETTE, Alban BERTHELOT, Alessandra GERARD et Marine CONREUX.
