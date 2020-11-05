@@ -159,7 +159,7 @@ catch(Exception $e)
 						}
 					}
 					echo '</table>';
-					echo '<button onclick="telecharge()">Generate PDF</button>';
+					echo '<button onclick="telecharger()">Generate PDF</button>';
 				}
 				$req->closeCursor();
 			?>
