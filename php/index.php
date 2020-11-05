@@ -136,8 +136,8 @@ catch(Exception $e)
             print_r($donnees);
             echo '<p> Département : ' . htmlspecialchars($donnees['NomDep']) . '</p>';
             echo '<p> Région : ' . htmlspecialchars($donnees['NomRegion']) . '</p>';
-
-            $req->closeCursor();*/
+			*/
+            $req->closeCursor();
         ?>
 
 		<footer>
