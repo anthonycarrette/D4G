@@ -18,9 +18,13 @@ con.connect(function(err) {
 
 //mysql.escape()  échaper les saisies utilisateurs
 
+//var name = 'Amy';
 //var adr = 'Mountain 21';
-//var sql = 'SELECT * FROM customers WHERE address = ?';
-//con.query(sql, [adr], function (err, result) {
+//var sql = 'SELECT * FROM customers WHERE name = ? OR address = ?';
+//con.query(sql, [name, adr], function (err, result) {
 //  if (err) throw err;
 //  console.log(result);
 //});
+
+
+//console.log(result.affectedRows) récupérer le nombre de sorties
