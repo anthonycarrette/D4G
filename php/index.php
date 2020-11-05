@@ -71,11 +71,15 @@ catch(Exception $e)
 				flex-direction: row;
 				justify-content: space-between;
 			}
+			main
+			{
+				display: block;
+			}
 		</style>
 	</head>
 	
 	<body>
-		<div>
+		<main>
 			<h1 class="titre">Team 4 - DESIGN4GREEN 2020</h1>
 
 			<h2>L'indice de fragilité numérique</h2>
@@ -189,11 +193,11 @@ catch(Exception $e)
 				Mentions légales : Ce site à été réalisé par l'équipe 4 du Design4Green 2020.</br>
 				Aucunes données personelles n'est enregistrées lors de l'utilisation de cette application.
 			</p>
-			<footer>
-				<a href="#"><button>RGPD</button></a>
-
-				<a href="#"><button>Mentions légales</button></a>
-			</footer>
-		</div>
+		</main>
+		<footer>
+			<a href="#"><button>RGPD</button></a>
+			<a href="#"><button>Mentions légales</button></a>
+		</footer>
+		
 	</body>
 </html>
