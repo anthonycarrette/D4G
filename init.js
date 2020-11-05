@@ -32,6 +32,7 @@ app.get('/', function(req, resp) {
         } else {
             console.log('Successfull query');
             console.log(rows[0].CP);
+            resp.send(rows[0].CP);
 /*            resp.send('<table>');
             resp.send('<tr><th rowspan="2">Code Postal</th><th colspan="2">Commune</th><th colspan="2">Accès</th><th colspan="2">Compétences</th><th rowspan="2">Score Global</th></tr>');
             resp.send('<tr><td>Nom</td><td>Population</td><td>Accès aux interfaces numériques</td><td>Accès à l\'information</td><td>Compétences administratives</td><td>Compétences numériques/scolaires</td></tr>');
