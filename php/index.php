@@ -98,6 +98,7 @@ catch(Exception $e)
             echo '</table>';
             
             $donnees = $req2->fetch();
+            print_r($donnees);
             echo '<p> Département : ' . htmlspecialchars($donnees['NomDep']) . '</p>';
             echo '<p> Région : ' . htmlspecialchars($donnees['NomRegion']) . '</p>';
 
