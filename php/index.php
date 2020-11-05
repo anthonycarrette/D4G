@@ -62,7 +62,7 @@ catch(Exception $e)
 	</head>
 	
 	<body>
-		<div id="content">
+		<div>
 			<h1 class="titre">Team 4 - DESIGN4GREEN 2020</h1>
 
 			<h2>L'indice de fragilité numérique</h2>
@@ -117,7 +117,7 @@ catch(Exception $e)
 
 				if (isset($_POST['CP']) AND $_POST['CP'] != "") {
 
-					echo '<table>
+					echo '<table id="content">
 					<tr><th rowspan="2">Code Postal</th><th colspan="3">Commune</th><th colspan="2">Accès</th><th colspan="2">Compétences</th><th rowspan="2">Score Global Commune</th><th rowspan="2">Score Global Région</th></tr>
 					<tr><td>Nom</td><td>Nom Iris</td><td>Population</td><td>Accès aux interfaces numériques</td><td>Accès à l\'information</td><td>Compétences administratives</td><td>Compétences numériques/scolaires</td></tr>';
 					
@@ -160,6 +160,7 @@ catch(Exception $e)
 						}
 					}
 					echo '</table>';
+					echo '<div id="editor"></div>';
 					echo '<button onclick="telecharger()">Télécharge PDF</button>';
 				}
 				$req->closeCursor();

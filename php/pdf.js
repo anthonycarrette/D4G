@@ -1,4 +1,4 @@
-/*
+
 function telecharger(){
     var doc = new jsPDF();
     var specialElementHandlers = {
@@ -13,8 +13,8 @@ function telecharger(){
      });
     doc.save('sample-file.pdf');
 }
-*/
 
+/*
 function telecharger(){
     var w = document.getElementById("content").offsetWidth;
     var h = document.getElementById("content").offsetHeight;
@@ -29,4 +29,4 @@ function telecharger(){
       }
     });
 }
-    
+*/ 
