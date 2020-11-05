@@ -83,6 +83,7 @@ catch(Exception $e)
 
 					<?php
 						if (isset($_POST['CP']) AND $_POST['CP'] != "") {
+							$CP = $_POST['CP'];
 							$req = $bdd->prepare('SELECT count(*) as numbers FROM `Records` WHERE CodePostal = :CP;');
 							$req->execute(array(
 								'CP' => $CP,
