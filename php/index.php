@@ -62,6 +62,15 @@ catch(Exception $e)
 			{
 				margin-top: 10px;
 			}
+			footer
+			{
+				position: absolute;
+				bottom: 0px;
+
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
 		</style>
 	</head>
 	
@@ -176,11 +185,14 @@ catch(Exception $e)
 				}
 			?>
 			
+			<p>
+				Mentions légales : Ce site à été réalisé par l'équipe 4 du Design4Green 2020.</br>
+				Aucunes données personelles n'est enregistrées lors de l'utilisation de cette application.
+			</p>
 			<footer>
-				<p>
-					Mentions légales : Ce site à été réalisé par l'équipe 4 du Design4Green 2020.</br>
-					Aucunes données personelles n'est enregistrées lors de l'utilisation de cette application.
-				</p>
+				<a href="#"><button>RGPD</button></a>
+
+				<a href="#"><button>Mentions légales</button></a>
 			</footer>
 		</div>
 	</body>
