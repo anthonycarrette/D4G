@@ -42,6 +42,7 @@ connection.query(sql, [CP], function(error, rows, fields) {
     } else {
         console.log('Successfull query');
         resp.send(rows);
+        console.log('Result send');
     }
 });
 
