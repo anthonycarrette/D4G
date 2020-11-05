@@ -11,7 +11,7 @@ function telecharger(){
         'width': 170,
         'elementHandlers': specialElementHandlers
      });
-    doc.save('sample-file.pdf');
+    doc.save('resultats.pdf');
 }
 
 /*
