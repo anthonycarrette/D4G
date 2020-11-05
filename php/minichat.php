@@ -34,16 +34,13 @@ catch(Exception $e)
 </html>
 
 <?php
-$req = $bdd->query('SELECT id, pseudo, messages FROM chat ORDER BY id DESC LIMIT 10');
+$req = $bdd->query('SELECT CDR.CP, CDR.NomCom, InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, InfoCom.GlobalAcces, InfoCom.GlobalCompetences, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = 49750;');
 
 while ($donnees = $req->fetch())
 {
+    echo print_r($données);
 	echo '<p> <B>' . htmlspecialchars($donnees['pseudo']) . '</B> : ' . htmlspecialchars($donnees['messages']) . '</p>';
 }
-
-//http://localhost/tests/TP%20minichat/minichat.php
-
-
 
 $req->closeCursor();
 ?>
