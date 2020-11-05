@@ -110,6 +110,20 @@ catch(Exception $e)
                 <tr><td>Nom</td><td>Nom Iris</td><td>Population</td><td>Accès aux interfaces numériques</td><td>Accès à l\'information</td><td>Compétences administratives</td><td>Compétences numériques/scolaires</td></tr>';
                 while ($donnees = $req->fetch()){
 
+                    $req = $bdd->prepare('INSERT INTO Records (CodePostal, NomCom, NomIris, Populations, AccesInterfaceNum, AccesInfo, CompAdmin, CompNum, ScoreCom, ScoreReg) VALUES (:CP, :NomCom, :NomIris,:Populations, :AccesInterfaceNum, :AccesInformation, :CompAdministrative, :CompNumerique, :ScoreGlobalCom, :ScoreGlobalRegion)');
+                    $req->execute(array(
+                        'CP' => htmlspecialchars($donnees['CP']),
+                        'NomCom' => htmlspecialchars($donnees['NomCom']),
+                        'NomIris' => htmlspecialchars($donnees['NomIris']),
+                        'Populations' => htmlspecialchars($donnees['Population']),
+                        'AccesInterfaceNum' => htmlspecialchars($donnees['AccesInterfaceNum']),
+                        'AccesInformation' => htmlspecialchars($donnees['AccesInformation']),
+                        'CompAdministrative' => htmlspecialchars($donnees['CompAdministrative']),
+                        'CompNumerique' => htmlspecialchars($donnees['CompNumerique']),
+                        'ScoreGlobalCom' => htmlspecialchars($donnees['ScoreGlobalCom']),
+                        'ScoreGlobalRegion' => htmlspecialchars($donnees['ScoreGlobalRegion']),
+                    ));
+
                     echo '<tr><td>' . htmlspecialchars($donnees['CP']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['NomIris']) . '</td><td>' . htmlspecialchars($donnees['Population']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInformation']) . '</td><td>' . htmlspecialchars($donnees['CompAdministrative']) . '</td><td>' . htmlspecialchars($donnees['CompNumerique']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalCom']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalRegion']) . '</td></tr>';
                 }
             echo '</table>';
