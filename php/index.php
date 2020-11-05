@@ -164,7 +164,7 @@ catch(Exception $e)
 					echo '</table>';
 					echo '<div id="editor"></div>';
 					$req->closeCursor();
-					echo '<button onclike"telecharger()">Télécharger PDF</button>';
+					echo '<button onclick="telecharger()">Télécharger PDF</button>';
 				}
 			?>
 			
