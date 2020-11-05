@@ -54,10 +54,15 @@ catch(Exception $e)
 				text-align: center;
 				width: 200px;
 			}
-            #send
+            #search
             {
                 margin-bottom: 10px;
             }
+			footer
+			{
+				position: absolute; 
+				bottom: 0;
+			}
 		</style>
 	</head>
 	
@@ -110,7 +115,7 @@ catch(Exception $e)
 					?>
 					</select>
 					<br>
-					<input type="submit" value="Rechercher" />
+					<input type="submit" id ="search" value="Rechercher" />
 				</form>
 			</div>
 			
