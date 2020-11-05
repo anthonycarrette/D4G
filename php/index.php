@@ -76,7 +76,7 @@ catch(Exception $e)
 				<br>
 				<label for="NomCommune">Nom de commune</label>
 				<select name="NomCommune" id="NomCommune">
-					<option value="1">Choisir une commune</option>
+					<option value="">Choisir une commune</option>
 				</select>
 				<br>
 				<input type="submit" value="Rechercher" />
@@ -86,6 +86,7 @@ catch(Exception $e)
         <?php
             $CP = $_POST['CP'];
             $Com = $_POST['NomCommune'];
+            echo $CP;
 
             if (isset($_POST['CP']) AND $_POST['CP'] != "") {
                 $req = $bdd->prepare('SELECT CDR.CP, CDR.NomCom, InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = :CP;');
@@ -93,13 +94,13 @@ catch(Exception $e)
                     'CP' => $CP,
                 ));
             }
-
+            /*
             if (isset($_POST['NomCommune']) AND $_POST['NomCommune'] != "") {
                 $req = $bdd->prepare('SELECT CDR.CP, CDR.NomCom, InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.NomCom like :Com;');
                 $req->execute(array(
                     'Com' => $Com,
                 ));
-            }
+            }*/
 
 
             //$req2 = $req;
