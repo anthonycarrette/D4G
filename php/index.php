@@ -97,9 +97,6 @@ catch(Exception $e)
 							while ($donnees = $req->fetch()){
 								echo '<option value="' . htmlspecialchars($donnees['NomCom']) . '">' . htmlspecialchars($donnees['NomCom']) . '</option>';
 							}
-										json_encode($arr)
-										$file = file_get_contents("storage.json");
-										exit($file);
 							$req->closeCursor();
 						}
 					?>
