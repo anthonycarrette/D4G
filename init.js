@@ -31,34 +31,8 @@ app.get('/', function(req, resp) {
             console.log('Error in the query');
         } else {
             console.log('Successfull query');
-            console.log(rows[0].CP);
-            resp.write(rows[0].CP);
-            resp.end();
-/*            resp.send('<table>');
-            resp.send('<tr><th rowspan="2">Code Postal</th><th colspan="2">Commune</th><th colspan="2">Accès</th><th colspan="2">Compétences</th><th rowspan="2">Score Global</th></tr>');
-            resp.send('<tr><td>Nom</td><td>Population</td><td>Accès aux interfaces numériques</td><td>Accès à l\'information</td><td>Compétences administratives</td><td>Compétences numériques/scolaires</td></tr>');
-            resp.send('<tr><td>');
-            resp.send(rows[0].CP);
-            resp.send('</td><td>');
-            resp.send(rows[0].NomCom);
-            resp.send('</td><td>');
-            resp.send(rows[0].Population)
-            resp.send('</td><td>');
-            resp.send(rows[0].AccesInterfaceNum);
-            resp.send('</td><td>');
-            resp.send(rows[0].AccesInformation);
-            resp.send('</td><td>');
-            resp.send(rows[0].CompAdministrative);
-            resp.send('</td><td>');
-            resp.send(rows[0].CompNumerique);
-            resp.send('</td><td>');
-            resp.send(rows[0].ScoreGlobalCom);
-            resp.send('</td><td>');
-            resp.send('</table>');
-            resp.send('<p>Score de la région : </p>');
-            resp.send(rows[0].ScoreGlobalRegion);
-            resp.end();
-*/        }
+            console.send(rows);
+        }
     });
 });
 
