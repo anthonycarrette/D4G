@@ -95,7 +95,17 @@ catch(Exception $e)
 
                 echo '<table>
                 <tr><th rowspan="2">Code Postal</th><th colspan="3">Commune</th><th colspan="2">Accès</th><th colspan="2">Compétences</th><th rowspan="2">Score Global Commune</th><th rowspan="2">Score Global Région</th></tr>
-                <tr><td>Nom</td><td>Nom Iris</td><td>Population</td><td>Accès aux interfaces numériques</td><td>Accès à l\'information</td><td>Compétences administratives</td><td>Compétences numériques/scolaires</td></tr>';
+				<tr><td>Nom</td><td>Nom Iris</td><td>Population</td><td>Accès aux interfaces numériques</td><td>Accès à l\'information</td><td>Compétences administratives</td><td>Compétences numériques/scolaires</td></tr>';
+				
+				$req = $bdd->prepare('SELECT count(*) as numbers FROM `Records` WHERE CodePostal = :CP;');
+                $req->execute(array(
+                    'CP' => $CP,
+                ));
+
+				$donnees = $req->fetch();
+				echo $donnees['numbers'];
+
+
 
                 $req = $bdd->prepare('SELECT * FROM `Records` WHERE CodePostal = :CP;');
                 $req->execute(array(
