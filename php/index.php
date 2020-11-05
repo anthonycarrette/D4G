@@ -80,7 +80,8 @@ catch(Exception $e)
 				<br>
 				<label for="NomCommune">Nom de commune</label>
 				<select name="NomCommune" id="NomCommune">
-					<option value="">Choisir une commune</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
 				</select>
 				<br>
 				<input type="submit" value="Rechercher" />
