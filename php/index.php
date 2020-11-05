@@ -94,11 +94,13 @@ catch(Exception $e)
                     echo '<tr><td>' . htmlspecialchars($donnees['CP']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['Population']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInformation']) . '</td><td>' . htmlspecialchars($donnees['CompAdministrative']) . '</td><td>' . htmlspecialchars($donnees['CompNumerique']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalCom']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalRegion']) . '</td></tr>';
                 }
             echo '</table>';
-
+            
+            $donnees = $req->fetch();
             echo '<p> Département : ' . htmlspecialchars($donnees['NomDep']) . '</p>';
             echo '<p> Région : ' . htmlspecialchars($donnees['NomRegion']) . '</p>';
 
             $req->closeCursor();
         ?>
+
 	</body>
 </html>
