@@ -113,29 +113,34 @@ catch(Exception $e)
 			<?php
 				if (isset($_POST['NomCommune']) AND $_POST['NomCommune'] != "") { 
 					$Com = $_POST['NomCommune'];
+					$CP = $_POST['CP'];
 
 					echo '<table id="content">
 					<tr><th rowspan="2">Code Postal</th><th colspan="3">Commune</th><th colspan="2">Accès</th><th colspan="2">Compétences</th><th rowspan="2">Score Global Commune</th><th rowspan="2">Score Global Région</th></tr>
 					<tr><td>Nom</td><td>Nom Iris</td><td>Population</td><td>Accès aux interfaces numériques</td><td>Accès à l\'information</td><td>Compétences administratives</td><td>Compétences numériques/scolaires</td></tr>';
 					
-					$req = $bdd->prepare('SELECT count(*) as numbers FROM `Records` WHERE NomCom like :Com;');
+					$req = $bdd->prepare('SELECT count(*) as numbers FROM `Records` WHERE NomCom LIKE :Com and CodePostal = :CP;');
 					$req->execute(array(
 						'Com' => $Com,
+						'CP' => $CP,
 					));
 
 					$donnees = $req->fetch();
 					if ($donnees['numbers'] != 0) {
-						$req = $bdd->prepare('SELECT * FROM `Records` WHERE NomCom like :Com;');
+						$req = $bdd->prepare('SELECT * FROM `Records` WHERE NomCom LIKE :Com AND CodePostal = :CP;');
 						$req->execute(array(
-						'Com' => $Com ));
+						'Com' => $Com,
+						'CP' => $CP,
+					));
 						while ($donnees = $req->fetch()){
 							echo '<tr><td>' . htmlspecialchars($donnees['CodePostal']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['NomIris']) . '</td><td>' . htmlspecialchars($donnees['Populations']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInfo']) . '</td><td>' . htmlspecialchars($donnees['CompAdmin']) . '</td><td>' . htmlspecialchars($donnees['CompNum']) . '</td><td>' . htmlspecialchars($donnees['ScoreCom']) . '</td><td>' . htmlspecialchars($donnees['ScoreReg']) . '</td></tr>';
 						}
 
 					} else {
-						$req = $bdd->prepare('SELECT CDR.CP, CDR.NomCom, InfoCom.NomIris,InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.NomCom like :Com;');
+						$req = $bdd->prepare('SELECT CDR.CP, CDR.NomCom, InfoCom.NomIris,InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.NomCom LIKE :Com; and CDR.CP = :CP');
 						$req->execute(array(
 							'Com' => $Com,
+							'CP' => $CP,
 						));
 						while ($donnees = $req->fetch()){
 
@@ -157,7 +162,9 @@ catch(Exception $e)
 						}
 					}
 					echo '</table>';
+					echo '<div id="editor"></div>';
 					$req->closeCursor();
+					echo '<button onclike"telecharger()">Télécharger PDF</button>';
 				}
 			?>
 			
