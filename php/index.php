@@ -51,6 +51,10 @@ catch(Exception $e)
 				text-align: center;
 				width: 200px;
 			}
+			#send
+			{
+				margin-bottom: 10px;
+			}
 		</style>
 	</head>
 	
@@ -79,7 +83,7 @@ catch(Exception $e)
 					<option value="">Choisir une commune</option>
 				</select>
 				<br>
-				<input type="submit" value="Rechercher" />
+				<input id="send" type="submit" value="Rechercher" />
 			</form>
 		</div>
 
@@ -136,5 +140,11 @@ catch(Exception $e)
             $req->closeCursor();*/
         ?>
 
+		<footer>
+			<p>
+				Mentions légales : Ce site à été crée par l'équipe 4 du Design4Green 2020.<br>
+				Aucunes données personnelles n'est enregistrées lors de l'utilisation de cette application.
+			</p>
+		</footer>
 	</body>
 </html>
