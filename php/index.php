@@ -118,8 +118,8 @@ catch(Exception $e)
 				if (isset($_POST['CP']) AND $_POST['CP'] != "") {
 
 					echo '<table id="content">
-					<tr><th rowspan="2">Code Postal</th><th colspan="3">Commune</th><th colspan="2">Accès</th><th colspan="2">Compétences</th><th rowspan="2">Score Global Commune</th><th rowspan="2">Score Global Région</th></tr>
-					<tr><td>Nom</td><td>Nom Iris</td><td>Population</td><td>Accès aux interfaces numériques</td><td>Accès à l\'information</td><td>Compétences administratives</td><td>Compétences numériques/scolaires</td></tr>';
+					<tr id="content"><th rowspan="2" id="content">Code Postal</th><th colspan="3" id="content">Commune</th><th colspan="2" id="content">Accès</th><th colspan="2" id="content">Compétences</th><th rowspan="2" id="content">Score Global Commune</th><th rowspan="2" id="content">Score Global Région</th></tr>
+					<tr id="content"><td id="content">Nom</td><td id="content">Nom Iris</td><td id="content">Population</td><td id="content">Accès aux interfaces numériques</td><td id="content">Accès à l\'information</td><td id="content">Compétences administratives</td><td id="content">Compétences numériques/scolaires</td></tr>';
 					
 					$req = $bdd->prepare('SELECT count(*) as numbers FROM `Records` WHERE CodePostal = :CP;');
 					$req->execute(array(
