@@ -97,20 +97,6 @@ catch(Exception $e)
 							while ($donnees = $req->fetch()){
 								echo '<option value="' . htmlspecialchars($donnees['NomCom']) . '">' . htmlspecialchars($donnees['NomCom']) . '</option>';
 							}
-
-
-							$req = $bdd->prepare('SELECT CDR.NomCom FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = :CP;');
-							$req->execute(array(
-							'CP' => $CP ));
-							//Initialize array variable
-							$dbdata = array();
-							//Fetch into associative array
-							while ( $row = $req->fetch_assoc())  {
-								$dbdata[]=$row;
-							}
-							//Print array in JSON format
-							echo json_encode($dbdata);
-
 							$req->closeCursor();
 						}
 					?>
