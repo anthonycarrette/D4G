@@ -89,7 +89,7 @@ catch(Exception $e)
             echo $CP;
 
             if (isset($_POST['CP']) AND $_POST['CP'] != "") {
-                $req = $bdd->prepare('SELECT CDR.CP, CDR.NomCom, InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = :CP;');
+                $req = $bdd->prepare('SELECT CDR.CP, CDR.NomCom, InfoCom.NomIris,InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = :CP;');
                 $req->execute(array(
                     'CP' => $CP,
                 ));
@@ -106,11 +106,11 @@ catch(Exception $e)
             //$req2 = $req;
 
             echo '<table>
-                <tr><th rowspan="2">Code Postal</th><th colspan="2">Commune</th><th colspan="2">Accès</th><th colspan="2">Compétences</th><th rowspan="2">Score Global Commune</th><th rowspan="2">Score Global Région</th></tr>
-                <tr><td>Nom</td><td>Population</td><td>Accès aux interfaces numériques</td><td>Accès à l\'information</td><td>Compétences administratives</td><td>Compétences numériques/scolaires</td></tr>';
+                <tr><th rowspan="2">Code Postal</th><th colspan="3">Commune</th><th colspan="2">Accès</th><th colspan="2">Compétences</th><th rowspan="2">Score Global Commune</th><th rowspan="2">Score Global Région</th></tr>
+                <tr><td>Nom</td><td>Nom Iris</td><td>Population</td><td>Accès aux interfaces numériques</td><td>Accès à l\'information</td><td>Compétences administratives</td><td>Compétences numériques/scolaires</td></tr>';
                 while ($donnees = $req->fetch()){
 
-                    echo '<tr><td>' . htmlspecialchars($donnees['CP']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['Population']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInformation']) . '</td><td>' . htmlspecialchars($donnees['CompAdministrative']) . '</td><td>' . htmlspecialchars($donnees['CompNumerique']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalCom']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalRegion']) . '</td></tr>';
+                    echo '<tr><td>' . htmlspecialchars($donnees['CP']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['NomIris']) . '</td><td>' . htmlspecialchars($donnees['Population']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInformation']) . '</td><td>' . htmlspecialchars($donnees['CompAdministrative']) . '</td><td>' . htmlspecialchars($donnees['CompNumerique']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalCom']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalRegion']) . '</td></tr>';
                 }
             echo '</table>';
             /*
