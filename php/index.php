@@ -14,7 +14,7 @@ catch(Exception $e)
 	<head>
 		<title>Team 4 - DESIGN4GREEN 2020</title>
 		<meta charset="UTF-8">
-		<link rel="icon" href="favicon.png" />
+		<link rel="icon" href="D4G.png" />
 
 		<script type="text/javascript" src="script.js"></script>
 
@@ -25,7 +25,7 @@ catch(Exception $e)
 			}
 			.titre{
 				text-align: center;
-				background-color: green;
+				background-color: #A2BF8E;
 			}
 			.formulaire{
 				display: flex;
