@@ -99,7 +99,7 @@ $req = $bdd->query('SELECT CDR.CP, CDR.NomCom, InfoCom.Population, InfoCom.Score
 while ($donnees = $req->fetch())
 {
     echo print_r($données);
-	echo '<p> <B>' . htmlspecialchars($donnees['pseudo']) . '</B> : ' . htmlspecialchars($donnees['messages']) . '</p>';
+	echo '<p> <B>' . htmlspecialchars($donnees['CDR.CP']) . '</B> : ' . htmlspecialchars($donnees['CDR.NomCom']) . '</p>';
 }
 
 $req->closeCursor();
