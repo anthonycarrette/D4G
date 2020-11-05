@@ -8,7 +8,7 @@ function telecharger(){
     
     doc.fromHTML($('#content').html(), 15, 15, {
         'width': 170,
-            'elementHandlers': specialElementHandlers
+        'elementHandlers': specialElementHandlers
      });
     doc.save('sample-file.pdf');
 }
