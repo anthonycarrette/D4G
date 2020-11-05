@@ -103,55 +103,40 @@ catch(Exception $e)
                 ));
 
 				$donnees = $req->fetch();
-				echo $donnees['numbers'];
+				if ($donnees['numbers'] != 0) {
+					$req = $bdd->prepare('SELECT * FROM `Records` WHERE CodePostal = :CP;');
+                	$req->execute(array(
+					'CP' => $CP ));
+					while ($donnees = $req->fetch()){
+						echo '<tr><td>' . htmlspecialchars($donnees['CodePostal']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['NomIris']) . '</td><td>' . htmlspecialchars($donnees['Populations']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInfo']) . '</td><td>' . htmlspecialchars($donnees['CompAdmin']) . '</td><td>' . htmlspecialchars($donnees['CompNum']) . '</td><td>' . htmlspecialchars($donnees['ScoreCom']) . '</td><td>' . htmlspecialchars($donnees['ScoreReg']) . '</td></tr>';
+					}
 
+				} else {
+					$req = $bdd->prepare('SELECT CDR.CP, CDR.NomCom, InfoCom.NomIris,InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = :CP;');
+					$req->execute(array(
+						'CP' => $CP,
+					));
+					while ($donnees = $req->fetch()){
 
+						$req2 = $bdd->prepare('INSERT INTO Records (CodePostal, NomCom, NomIris, Populations, AccesInterfaceNum, AccesInfo, CompAdmin, CompNum, ScoreCom, ScoreReg) VALUES (:CP, :NomCom, :NomIris,:Populations, :AccesInterfaceNum, :AccesInformation, :CompAdministrative, :CompNumerique, :ScoreGlobalCom, :ScoreGlobalRegion)');
+						$req2->execute(array(
+							'CP' => htmlspecialchars($donnees['CP']),
+							'NomCom' => htmlspecialchars($donnees['NomCom']),
+							'NomIris' => htmlspecialchars($donnees['NomIris']),
+							'Populations' => htmlspecialchars($donnees['Population']),
+							'AccesInterfaceNum' => htmlspecialchars($donnees['AccesInterfaceNum']),
+							'AccesInformation' => htmlspecialchars($donnees['AccesInformation']),
+							'CompAdministrative' => htmlspecialchars($donnees['CompAdministrative']),
+							'CompNumerique' => htmlspecialchars($donnees['CompNumerique']),
+							'ScoreGlobalCom' => htmlspecialchars($donnees['ScoreGlobalCom']),
+							'ScoreGlobalRegion' => htmlspecialchars($donnees['ScoreGlobalRegion']),
+						));
 
-                $req = $bdd->prepare('SELECT * FROM `Records` WHERE CodePostal = :CP;');
-                $req->execute(array(
-                    'CP' => $CP,
-                ));
-
-                while ($donnees = $req->fetch()){
-                    if ($donnees['CodePostal'] != "" ){
-						echo 'enregistré';
-                        echo '<tr><td>' . htmlspecialchars($donnees['CodePostal']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['NomIris']) . '</td><td>' . htmlspecialchars($donnees['Populations']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInfo']) . '</td><td>' . htmlspecialchars($donnees['CompAdmin']) . '</td><td>' . htmlspecialchars($donnees['CompNum']) . '</td><td>' . htmlspecialchars($donnees['ScoreCom']) . '</td><td>' . htmlspecialchars($donnees['ScoreReg']) . '</td></tr>';
-                    } else {
-						echo 'Pas encore enregistré';
-                        $req = $bdd->prepare('SELECT CDR.CP, CDR.NomCom, InfoCom.NomIris,InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = :CP;');
-                        $req->execute(array(
-                            'CP' => $CP,
-                        ));
-
-                        while ($donnees = $req->fetch()){
-
-                            $req2 = $bdd->prepare('INSERT INTO Records (CodePostal, NomCom, NomIris, Populations, AccesInterfaceNum, AccesInfo, CompAdmin, CompNum, ScoreCom, ScoreReg) VALUES (:CP, :NomCom, :NomIris,:Populations, :AccesInterfaceNum, :AccesInformation, :CompAdministrative, :CompNumerique, :ScoreGlobalCom, :ScoreGlobalRegion)');
-                            $req2->execute(array(
-                                'CP' => htmlspecialchars($donnees['CP']),
-                                'NomCom' => htmlspecialchars($donnees['NomCom']),
-                                'NomIris' => htmlspecialchars($donnees['NomIris']),
-                                'Populations' => htmlspecialchars($donnees['Population']),
-                                'AccesInterfaceNum' => htmlspecialchars($donnees['AccesInterfaceNum']),
-                                'AccesInformation' => htmlspecialchars($donnees['AccesInformation']),
-                                'CompAdministrative' => htmlspecialchars($donnees['CompAdministrative']),
-                                'CompNumerique' => htmlspecialchars($donnees['CompNumerique']),
-                                'ScoreGlobalCom' => htmlspecialchars($donnees['ScoreGlobalCom']),
-                                'ScoreGlobalRegion' => htmlspecialchars($donnees['ScoreGlobalRegion']),
-                            ));
-
-                            echo '<tr><td>' . htmlspecialchars($donnees['CP']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['NomIris']) . '</td><td>' . htmlspecialchars($donnees['Population']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInformation']) . '</td><td>' . htmlspecialchars($donnees['CompAdministrative']) . '</td><td>' . htmlspecialchars($donnees['CompNumerique']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalCom']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalRegion']) . '</td></tr>';
-                        }
-                    }
-                }
+						echo '<tr><td>' . htmlspecialchars($donnees['CP']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['NomIris']) . '</td><td>' . htmlspecialchars($donnees['Population']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInformation']) . '</td><td>' . htmlspecialchars($donnees['CompAdministrative']) . '</td><td>' . htmlspecialchars($donnees['CompNumerique']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalCom']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalRegion']) . '</td></tr>';
+					}
+				}
                 echo '</table>';
-
             }
-            /*
-            $donnees = $req2->fetch();
-            print_r($donnees);
-            echo '<p> Département : ' . htmlspecialchars($donnees['NomDep']) . '</p>';
-            echo '<p> Région : ' . htmlspecialchars($donnees['NomRegion']) . '</p>';
-            */
             $req->closeCursor();
         ?>
         
