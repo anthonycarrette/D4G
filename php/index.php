@@ -14,11 +14,9 @@ catch(Exception $e)
 	<head>
 		<title>Team 4 - DESIGN4GREEN 2020</title>
 		<meta charset="UTF-8">
-		<link rel="icon" href="D4G.png" />
+		<link rel="icon" href="./D4G.png"/>
 
 		<script type="text/javascript" src="pdf.js"></script>
-		<script src="html2canvas.js"></script>
-		<script src="jquery-3.5.1.min.js"></script>
 		<script src="jspdf.min.js"></script>
 
 		<style>
