@@ -83,30 +83,23 @@ catch(Exception $e)
 			</form>
 		</div>
 
-		<table>
-			<tr><th rowspan="2">Code Postal</th><th colspan="2">Commune</th><th colspan="2">Accès</th><th colspan="2">Compétences</th><th rowspan="2">Score Global</th></tr>
-			<tr><td>Nom</td><td>Population</td><td>Accès aux interfaces numériques</td><td>Accès à l'information</td><td>Compétences administratives</td><td>Compétences numériques/scolaires</td></tr>
-			<tr><td>49 les meilleurs</td><td>trou</td><td>plein plein</td><td>valeur1</td><td>valeur2</td><td>valeur3</td><td>valeur4</td><td>tadaaa</td></tr>
-		</table>
+		<?php
+            $req = $bdd->query('SELECT CDR.CP, CDR.NomCom, InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = 71220;') or die(print_r($bdd->errorInfo()));
+
+            echo '<table>
+            <tr><th rowspan="2">Code Postal</th><th colspan="2">Commune</th><th colspan="2">Accès</th><th colspan="2">Compétences</th><th rowspan="2">Score Global</th></tr>
+            <tr><td>Nom</td><td>Population</td><td>Accès aux interfaces numériques</td><td>Accès à l\'information</td><td>Compétences administratives</td><td>Compétences numériques/scolaires</td></tr>';
+
+            while ($donnees = $req->fetch()){
+
+                echo '<tr><td>' . htmlspecialchars($donnees['CP']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['Population']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInformation']) . '</td><td>' . htmlspecialchars($donnees['CompAdministrative']) . '</td><td>' . htmlspecialchars($donnees['CompNumerique']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalCom']) . '</td></tr>';
+            }
+
+            echo '</table>';
+
+            $req->closeCursor();
+        ?>
 		<p>Pour le département "Département de trou" le score est de ...</p>
 		<p>Pour la région "Région de trou" le score est de ...</p>
 	</body>
 </html>
-
-<?php
-$req = $bdd->query('SELECT CDR.CP, CDR.NomCom, InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = 71220;') or die(print_r($bdd->errorInfo()));
-
-echo '<table>
-<tr><th rowspan="2">Code Postal</th><th colspan="2">Commune</th><th colspan="2">Accès</th><th colspan="2">Compétences</th><th rowspan="2">Score Global</th></tr>
-<tr><td>Nom</td><td>Population</td><td>Accès aux interfaces numériques</td><td>Accès à l\'information</td><td>Compétences administratives</td><td>Compétences numériques/scolaires</td></tr>';
-
-while ($donnees = $req->fetch()){
-
-    echo '<tr><td>' . htmlspecialchars($donnees['CP']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['Population']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInformation']) . '</td><td>' . htmlspecialchars($donnees['CompAdministrative']) . '</td><td>' . htmlspecialchars($donnees['CompNumerique']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalCom']) . '</td></tr>';
-}
-
-echo '</table>';
-
-$req->closeCursor();
-
-?>
