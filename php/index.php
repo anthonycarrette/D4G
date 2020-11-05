@@ -80,6 +80,7 @@ catch(Exception $e)
 				<br>
 				<label for="NomCommune">Nom de commune</label>
 				<select name="NomCommune" id="NomCommune">
+
 					<?php
 						if (isset($_POST['CP']) AND $_POST['CP'] != "") {
 							$req = $bdd->prepare('SELECT count(*) as numbers FROM `Records` WHERE CodePostal = :CP;');
@@ -95,8 +96,10 @@ catch(Exception $e)
 								while ($donnees = $req->fetch()){
 									echo '<option value="' . htmlspecialchars($donnees['NomCom']) . '">' . htmlspecialchars($donnees['NomCom']) . '</option>';
 								}
+							}
+							$req->closeCursor();
+						}
 					?>
-					<!--<option value="1">1</option>-->
 
 				</select>
 				<br>
