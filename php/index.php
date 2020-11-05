@@ -80,6 +80,8 @@ catch(Exception $e)
 					if (isset($_POST['CP']) AND $_POST['CP'] != "") {
 						$CP = $_POST['CP'];
 						echo '<input type="text" name="CP" id="CP" value="' . $CP . '">';
+					} else {
+						echo '<input type="text" name="CP" id="CP" value="">';
 					}
 				?>
 				<br>
