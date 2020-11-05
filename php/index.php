@@ -69,7 +69,7 @@ catch(Exception $e)
 			Les deux autres sont les compétences utilisation d'une interface et les compétences administratives.
 		</p>
 		<div class="formulaire">
-			<form>
+			<form action="index.php" method="post">
 				<p>Chercher une commune par : </p>
 				<label for="CP">Code Postal</label>
 				<input type="text" name="CP" id="CP">
@@ -79,14 +79,30 @@ catch(Exception $e)
 					<option value="1">Choisir une commune</option>
 				</select>
 				<br>
-				<button onclick="/script.js/nodejs()">Rechercher</button>
+				<input type="submit" value="Rechercher" />
 			</form>
 		</div>
 
-		<?php
-            $req = $bdd->query('SELECT CDR.CP, CDR.NomCom, InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = 71220;') or die(print_r($bdd->errorInfo()));
+        <?php
+            $CP = $_POST['CP'];
+            $Com = $_POST['NomCommune'];
 
-            $req2 = $req;
+            if (isset($_POST['CP']) AND $_POST['CP'] != "") {
+                $req = $bdd->prepare('SELECT CDR.CP, CDR.NomCom, InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = :CP;');
+                $req->execute(array(
+                    'CP' => $CP,
+                ));
+            }
+
+            if (isset($_POST['NomCommune']) AND $_POST['NomCommune'] != "") {
+                $req = $bdd->prepare('SELECT CDR.CP, CDR.NomCom, InfoCom.Population, InfoCom.ScoreGlobalCom, InfoCom.AccesInterfaceNum, InfoCom.AccesInformation, InfoCom.CompAdministrative, InfoCom.CompNumerique, CDR.NomDep, CDR.NomRegion, InfoCom.ScoreGlobalRegion FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.NomCom like :Com;');
+                $req->execute(array(
+                    'Com' => $Com,
+                ));
+            }
+
+
+            //$req2 = $req;
 
             echo '<table>
                 <tr><th rowspan="2">Code Postal</th><th colspan="2">Commune</th><th colspan="2">Accès</th><th colspan="2">Compétences</th><th rowspan="2">Score Global Commune</th><th rowspan="2">Score Global Région</th></tr>
@@ -96,13 +112,13 @@ catch(Exception $e)
                     echo '<tr><td>' . htmlspecialchars($donnees['CP']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['Population']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInformation']) . '</td><td>' . htmlspecialchars($donnees['CompAdministrative']) . '</td><td>' . htmlspecialchars($donnees['CompNumerique']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalCom']) . '</td><td>' . htmlspecialchars($donnees['ScoreGlobalRegion']) . '</td></tr>';
                 }
             echo '</table>';
-            
+            /*
             $donnees = $req2->fetch();
             print_r($donnees);
             echo '<p> Département : ' . htmlspecialchars($donnees['NomDep']) . '</p>';
             echo '<p> Région : ' . htmlspecialchars($donnees['NomRegion']) . '</p>';
 
-            $req->closeCursor();
+            $req->closeCursor();*/
         ?>
 
 	</body>
