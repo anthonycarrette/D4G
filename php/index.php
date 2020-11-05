@@ -104,6 +104,7 @@ catch(Exception $e)
 
                 while ($donnees = $req->fetch()){
                     if ($donnees['CodePostal'] != "" ){
+						echo 'enregistré';
                         echo '<tr><td>' . htmlspecialchars($donnees['CodePostal']) . '</td><td>' . htmlspecialchars($donnees['NomCom']) . '</td><td>' . htmlspecialchars($donnees['NomIris']) . '</td><td>' . htmlspecialchars($donnees['Populations']) . '</td><td>' . htmlspecialchars($donnees['AccesInterfaceNum']) . '</td><td>' . htmlspecialchars($donnees['AccesInfo']) . '</td><td>' . htmlspecialchars($donnees['CompAdmin']) . '</td><td>' . htmlspecialchars($donnees['CompNum']) . '</td><td>' . htmlspecialchars($donnees['ScoreCom']) . '</td><td>' . htmlspecialchars($donnees['ScoreReg']) . '</td></tr>';
                     } else {
 						echo 'Pas encore enregistré';
