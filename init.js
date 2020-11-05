@@ -31,7 +31,7 @@ app.get('/', function(req, resp) {
             console.log('Error in the query');
         } else {
             console.log('Successfull query');
-            console.send(rows);
+            resp.send(rows);
         }
     });
 });
