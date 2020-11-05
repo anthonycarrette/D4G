@@ -95,7 +95,7 @@ catch(Exception $e)
 						<?php
 							if (isset($_POST['CP']) AND $_POST['CP'] != "") {
 								$CP = $_POST['CP'];
-								$req = $bdd->prepare('SELECT CDR.NomCom FROM InfoCom, CDR, InfoCom_CDR WHERE InfoCom.CodeIris = InfoCom_CDR.CodeIris AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = :CP;');
+								$req = $bdd->prepare('SELECT CDR.NomCom FROM CDR WHERE CDR.CP = :CP;');
 								$req->execute(array(
 								'CP' => $CP ));
 								while ($donnees = $req->fetch()){
