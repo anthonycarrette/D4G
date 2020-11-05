@@ -76,7 +76,12 @@ catch(Exception $e)
 			<form action="index.php" method="post">
 				<p>Chercher une commune par : </p>
 				<label for="CP">Code Postal</label>
-				<input type="text" name="CP" id="CP">
+				<?php
+					if (isset($_POST['CP']) AND $_POST['CP'] != "") {
+						$CP = $_POST['CP'];
+						echo '<input type="text" name="CP" id="CP" value="' . $CP . '">';
+					}
+				?>
 				<br>
 				<label for="NomCommune">Nom de commune</label>
 				<select name="NomCommune" id="NomCommune">
