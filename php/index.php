@@ -99,7 +99,6 @@ catch(Exception $e)
 
             $req->closeCursor();
         ?>
-		<p>Pour le département "Département de trou" le score est de ...</p>
-		<p>Pour la région "Région de trou" le score est de ...</p>
+		<p>La région est ...</p>
 	</body>
 </html>
