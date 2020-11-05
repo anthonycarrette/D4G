@@ -80,8 +80,24 @@ catch(Exception $e)
 				<br>
 				<label for="NomCommune">Nom de commune</label>
 				<select name="NomCommune" id="NomCommune">
-					<option value="1">1</option>
-					<option value="2">2</option>
+					<?php
+						if (isset($_POST['CP']) AND $_POST['CP'] != "") {
+							$req = $bdd->prepare('SELECT count(*) as numbers FROM `Records` WHERE CodePostal = :CP;');
+							$req->execute(array(
+								'CP' => $CP,
+							));
+
+							$donnees = $req->fetch();
+							if ($donnees['numbers'] != 0) {
+								$req = $bdd->prepare('SELECT CDR.NomCom AND InfoCom_CDR.INSEE = CDR.INSEE AND CDR.CP = :CP;');
+								$req->execute(array(
+								'CP' => $CP ));
+								while ($donnees = $req->fetch()){
+									echo '<option value="' . htmlspecialchars($donnees['NomCom']) . '">' . htmlspecialchars($donnees['NomCom']) . '</option>';
+								}
+					?>
+					<!--<option value="1">1</option>-->
+
 				</select>
 				<br>
 				<input type="submit" value="Rechercher" />
