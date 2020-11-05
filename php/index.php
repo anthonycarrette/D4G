@@ -62,19 +62,6 @@ catch(Exception $e)
 			{
 				margin-top: 10px;
 			}
-			footer
-			{
-				position: absolute;
-				bottom: 0px;
-
-				display: flex;
-				flex-direction: row;
-				justify-content: space-between;
-			}
-			main
-			{
-				display: block;
-			}
 		</style>
 	</head>
 	
@@ -188,15 +175,13 @@ catch(Exception $e)
 					echo '<button onclick="telecharger()" id="download">Télécharger PDF</button>';
 				}
 			?>
-			
+		</main>
+
+		<footer>
 			<p>
 				Mentions légales : Ce site à été réalisé par l'équipe 4 du Design4Green 2020.</br>
 				Aucunes données personelles n'est enregistrées lors de l'utilisation de cette application.
 			</p>
-		</main>
-		<footer>
-			<a href="#"><button>RGPD</button></a>
-			<a href="#"><button>Mentions légales</button></a>
 		</footer>
 		
 	</body>
