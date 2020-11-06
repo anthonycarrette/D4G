@@ -66,12 +66,15 @@ catch(Exception $e)
 			<p align="justify">
 				L'indice de fragilité numérique révèle les zones d'exclusion numérique sur un territoire donné.
 				Cet outil permet, que vous soyez une commune, un département ou une région de comparer votre indice de fragilité numérique avec les autres territoires.
-				Il peut être associé à une représentation graphique afin d'aider la visualisation (ce ne sera pas le cas ici).
+				Il peut être associé à une représentation graphique afin d'aider la visualisation (ce n'est pas le cas ici).
 			</p>
 			<p align="justify">
 				À ce jour, cet indice se compose de quatre indicateurs qui permettent de créer une analyse globale. 
 				Les deux premiers sont l'accès à l'information et aux interfaces numériques.
 				Les deux autres sont les compétences utilisation d'une interface et les compétences administratives.
+			</p>
+			<p>
+				Pour conclure, nous pouvons dire que cet indicateur est donc très utile afin de prendre des décissions relatives à l'information et à la communication, spécialement pour les communes et communautés de communes.
 			</p>
 			<div class="formulaire">
 				<form action="index.php" method="post">
@@ -163,7 +166,7 @@ catch(Exception $e)
 		<footer>
 			<p>
 				Mentions légales : Ce site à été réalisé par l'équipe 4 du Design4Green 2020.</br>
-				Aucunes données personelles ne sont enregistrées lors de l'utilisation de cette application.
+				Aucune donnée personelle n'est enregistrée lors de l'utilisation de cette application.
 			</p>
 		</footer>
 	</body>
