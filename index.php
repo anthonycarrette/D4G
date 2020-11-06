@@ -16,6 +16,7 @@ catch(Exception $e)
 		<link rel="icon" href="/var/www/D4G/D4G.png"/>
 		<script type="text/javascript" src="pdf.js"></script>
 		<script src="jspdf.min.js"></script>
+		<script src="jquery-3.5.1.min.js"></script>
 		<style>
 			body{
 				display: flex;
